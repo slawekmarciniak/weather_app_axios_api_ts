@@ -1,4 +1,4 @@
-import OpenWheather from "./components/WheaterProvider/OpenWeather";
+import OpenWheather from "./components/WeatherProvider/OpenWeather";
 import "./App.css";
 
 function App() {
