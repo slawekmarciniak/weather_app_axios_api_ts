@@ -4,7 +4,7 @@ const url = "https://api.openweathermap.org/data/2.5/weather";
 
 export const getData = async (city: string) => {
   return axios
-    .get(`${url}?q=${city}&units=metric&lang=pl&appid=${key}`)
+    .get(`${url}?q=${city}&units=metric&appid=${key}`)
     .then((data) => {
       console.log(data.data.main.temp);
       return data.data;

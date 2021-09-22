@@ -1,0 +1,9 @@
+.weatherContainer {
+    display: flex;
+    flex-wrap: wrap;
+    background-color:#dfe6e9;
+    padding: 20px;
+    width: 450px;
+    margin: auto;
+    border-radius: 5px;
+}
