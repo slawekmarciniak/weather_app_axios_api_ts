@@ -37,7 +37,12 @@ const SearchInput: FC<SearchInputProps> = ({ handleClick }) => {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const onlyLetters = /^[a-pr-uwy-zA-PR-UWY-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/;
+    const onlyLetters = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/;
+
+    if (city.length === 0) {
+      alert("please enter city name");
+      return;
+    }
     if (!city.match(onlyLetters)) {
       alert("city name must contain only letters");
       return;

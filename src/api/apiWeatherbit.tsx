@@ -10,5 +10,6 @@ export const getWeatherbitApiData = async (city: string) => {
     })
     .catch(function (error) {
       console.error(error);
+      return "error";
     });
 };

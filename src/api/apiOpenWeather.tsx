@@ -9,7 +9,7 @@ export const getOpenWeatherData = async (city: string) => {
       return data.data;
     })
     .catch(function (error) {
-      console.error("accu weather error", error);
+      console.error(error);
       return "error";
     });
 };
