@@ -4,6 +4,7 @@ import WeatherLayout from "../WeatherLayout";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
 import SearchInput from "../SearchInput";
+import "./styles.css";
 
 interface WeatherbitProps {}
 
@@ -24,6 +25,10 @@ const Weatherbit: FC<WeatherbitProps> = () => {
   const handleClick = () => {
     const getWeather = async () => {
       const data = await getWeatherbitApiData(city);
+      if (data === "error") {
+        alert("error! please try again");
+        return;
+      }
       groupWeatherData(data);
     };
     getWeather();
@@ -32,6 +37,7 @@ const Weatherbit: FC<WeatherbitProps> = () => {
   return (
     <div>
       <SearchInput handleClick={handleClick} />
+      <div className="forecastType">16 days forecast: </div>
       {weatherbitData && (
         <div>
           <WeatherLayout weather={weatherbitData} />

@@ -6,10 +6,10 @@ export const getOpenWeatherData = async (city: string) => {
   return axios
     .get(`${url}?q=${city}&units=metric&appid=${key}`)
     .then((data) => {
-      console.log(data.data.main.temp);
       return data.data;
     })
     .catch(function (error) {
-      console.error(error);
+      console.error("accu weather error", error);
+      return "error";
     });
 };

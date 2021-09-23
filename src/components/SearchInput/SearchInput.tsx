@@ -38,6 +38,17 @@ const SearchInput: FC<SearchInputProps> = ({ handleClick }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+
+    const onlyLetters = /^[a-pr-uwy-zA-PR-UWY-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/;
+    if (!city.match(onlyLetters)) {
+      alert("city name must contain only letters");
+      return;
+    }
+    if (city.length < 2) {
+      alert("city must have minimum 2 letters");
+      return;
+    }
+
     handleClick();
   };
 

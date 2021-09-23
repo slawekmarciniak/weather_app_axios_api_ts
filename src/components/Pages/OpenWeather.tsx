@@ -4,12 +4,12 @@ import WeatherLayout from "../WeatherLayout";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
 import SearchInput from "../SearchInput";
+import "./styles.css";
 
 interface OpenWeatherProps {}
 
 const OpenWeather: FC<OpenWeatherProps> = () => {
-  const { openWeatherData, setOpenWeatherData, city, handleInputChange } =
-    useContext(AppContext);
+  const { openWeatherData, setOpenWeatherData, city } = useContext(AppContext);
 
   const groupWeatherData = (data: any) => {
     const wheaterParameters = [
@@ -19,19 +19,19 @@ const OpenWeather: FC<OpenWeatherProps> = () => {
       },
       {
         name: "temperature",
-        details: data.main.temp,
+        details: `${data.main.temp} c`,
       },
       {
         name: "pressure",
-        details: data.main.pressure,
+        details: `${data.main.pressure} hPa`,
       },
       {
         name: "wind",
-        details: data.wind.speed,
+        details: `${data.wind.speed} km/h`,
       },
       {
         name: "humidity",
-        details: data.main.humidity,
+        details: `${data.main.humidity} %`,
       },
     ];
     return setOpenWeatherData(wheaterParameters);
@@ -40,6 +40,10 @@ const OpenWeather: FC<OpenWeatherProps> = () => {
   const handleClick = () => {
     const getWeather = async () => {
       const data = await getOpenWeatherData(city);
+      if (data === "error") {
+        alert("error! please try again");
+        return;
+      }
       groupWeatherData(data);
     };
     getWeather();
@@ -48,6 +52,7 @@ const OpenWeather: FC<OpenWeatherProps> = () => {
   return (
     <div>
       <SearchInput handleClick={handleClick} />
+      <div className="forecastType">Todays forecast: </div>
       {openWeatherData && (
         <div>
           <WeatherLayout weather={openWeatherData} />

@@ -4,6 +4,7 @@ import WeatherLayout from "../WeatherLayout";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
 import SearchInput from "../SearchInput";
+import "./styles.css";
 
 interface AccuWeatherProps {}
 
@@ -24,6 +25,10 @@ const AccuWeather: FC<AccuWeatherProps> = () => {
   const handleClick = () => {
     const getData = async () => {
       const data = await getAccuWeatherData(city);
+      if (data === "error") {
+        alert("error! please try again");
+        return;
+      }
       groupWeatherData(data);
     };
     getData();
@@ -32,6 +37,7 @@ const AccuWeather: FC<AccuWeatherProps> = () => {
   return (
     <div>
       <SearchInput handleClick={handleClick} />
+      <div className="forecastType">5 days forecast: </div>
       {accuWeatherData && (
         <div>
           <WeatherLayout weather={accuWeatherData} />
