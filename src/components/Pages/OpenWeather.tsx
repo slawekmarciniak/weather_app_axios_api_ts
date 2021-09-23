@@ -3,6 +3,7 @@ import { getOpenWeatherData } from "../../api/apiOpenWeather";
 import WeatherLayout from "../WeatherLayout";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
+import SearchInput from "../SearchInput";
 
 interface OpenWeatherProps {}
 
@@ -45,9 +46,8 @@ const OpenWeather: FC<OpenWeatherProps> = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "green" }}>
-      <input onChange={handleInputChange} type="text" value={city} />
-      <button onClick={handleClick}>find</button>
+    <div>
+      <SearchInput handleClick={handleClick} />
       <WeatherLayout weather={openWeatherData} />
     </div>
   );

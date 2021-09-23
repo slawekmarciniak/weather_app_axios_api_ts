@@ -8,6 +8,9 @@ const AppProvider = ({ children }) => {
   const [city, setCity] = useState("");
 
   const handleInputChange = (e) => setCity(e.target.value);
+  const resetInput = () => {
+    setCity("");
+  };
 
   return (
     <AppContext.Provider
@@ -21,6 +24,7 @@ const AppProvider = ({ children }) => {
         city,
         setCity,
         handleInputChange,
+        resetInput,
       }}
     >
       {children}

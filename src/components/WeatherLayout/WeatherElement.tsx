@@ -5,7 +5,7 @@ interface WeatherElementProps {
 }
 
 const styles = {
-  width: 200,
+  width: 190,
   height: 150,
   margin: 10,
   backgroundColor: "#74b9ff",
@@ -13,12 +13,14 @@ const styles = {
   flexDirection: "column" as "column",
   alignItems: "center",
   justifyContent: "space-around",
+  padding: 5,
 };
+
 const WeatherElement: FC<WeatherElementProps> = ({ weatherDetail }) => {
   return (
     <Paper elevation={3} style={styles}>
-      <div>{weatherDetail.name}</div>
-      <div>{weatherDetail.details}</div>
+      <div className="description">{weatherDetail.name}</div>
+      <div className="text">{weatherDetail.details}</div>
     </Paper>
   );
 };

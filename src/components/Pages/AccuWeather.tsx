@@ -1,8 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { getAccuWeatherData } from "../../api/apiAccuWeather";
 import WeatherLayout from "../WeatherLayout";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
+import SearchInput from "../SearchInput";
 
 interface AccuWeatherProps {}
 
@@ -30,9 +31,8 @@ const AccuWeather: FC<AccuWeatherProps> = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "red" }}>
-      <input onChange={handleInputChange} type="text" value={city} />
-      <button onClick={handleClick}>find</button>
+    <div>
+      <SearchInput handleClick={handleClick} />
       <WeatherLayout weather={accuWeatherData} />
     </div>
   );

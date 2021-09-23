@@ -3,6 +3,7 @@ import { getWeatherbitApiData } from "../../api/apiWeatherbit";
 import WeatherLayout from "../WeatherLayout";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
+import SearchInput from "../SearchInput";
 
 interface WeatherbitProps {}
 
@@ -31,8 +32,7 @@ const Weatherbit: FC<WeatherbitProps> = () => {
 
   return (
     <div>
-      <input onChange={handleInputChange} type="text" value={city} />
-      <button onClick={handleClick}>find</button>
+      <SearchInput handleClick={handleClick} />
       <WeatherLayout weather={weatherbitData} />
     </div>
   );
