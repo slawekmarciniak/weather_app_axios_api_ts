@@ -32,7 +32,6 @@ const Weatherbit: FC<WeatherbitProps> = () => {
   return (
     <div>
       <SearchInput handleClick={handleClick} />
-
       {weatherbitData && (
         <div>
           <WeatherLayout weather={weatherbitData} />
