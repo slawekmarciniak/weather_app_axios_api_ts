@@ -1,20 +1,16 @@
 import { FC, useEffect, useState } from "react";
 import { getAccuWeatherData } from "../../api/apiAccuWeather";
 import WeatherLayout from "../WeatherLayout";
+import { useContext } from "react";
+import { AppContext } from "../../AppContext/AppContext";
 
 interface AccuWeatherProps {}
 
 const AccuWeather: FC<AccuWeatherProps> = () => {
-  const [weather, setWeather] = useState<any>();
-  const [city, setCity] = useState("");
-
-  useEffect(() => {
-    setWeather(null);
-  }, []);
+  const { city, handleInputChange, accuWeatherData, setAccuWeatherData } =
+    useContext(AppContext);
 
   const groupWeatherData = (data: any) => {
-    console.log(data);
-
     const temperatures = [];
     for (let i = 0; i < data.length; i++) {
       temperatures.push({
@@ -22,11 +18,8 @@ const AccuWeather: FC<AccuWeatherProps> = () => {
         details: `min temp: ${data[i].Temperature.Minimum.Value}c, max temp: ${data[i].Temperature.Maximum.Value}c`,
       });
     }
-    return setWeather(temperatures);
+    return setAccuWeatherData(temperatures);
   };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setCity(e.target.value);
 
   const handleClick = () => {
     const getData = async () => {
@@ -40,7 +33,7 @@ const AccuWeather: FC<AccuWeatherProps> = () => {
     <div style={{ backgroundColor: "red" }}>
       <input onChange={handleInputChange} type="text" value={city} />
       <button onClick={handleClick}>find</button>
-      <WeatherLayout weather={weather} />
+      <WeatherLayout weather={accuWeatherData} />
     </div>
   );
 };

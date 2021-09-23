@@ -1,12 +1,14 @@
-import { FC, useState } from "react";
-import { getData } from "../../api/api";
+import { FC } from "react";
+import { getOpenWeatherData } from "../../api/apiOpenWeather";
 import WeatherLayout from "../WeatherLayout";
+import { useContext } from "react";
+import { AppContext } from "../../AppContext/AppContext";
 
 interface OpenWeatherProps {}
 
 const OpenWeather: FC<OpenWeatherProps> = () => {
-  const [weather, setWeather] = useState<any>();
-  const [city, setCity] = useState("");
+  const { openWeatherData, setOpenWeatherData, city, handleInputChange } =
+    useContext(AppContext);
 
   const groupWeatherData = (data: any) => {
     const wheaterParameters = [
@@ -31,15 +33,12 @@ const OpenWeather: FC<OpenWeatherProps> = () => {
         details: data.main.humidity,
       },
     ];
-    return setWeather(wheaterParameters);
+    return setOpenWeatherData(wheaterParameters);
   };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setCity(e.target.value);
 
   const handleClick = () => {
     const getWeather = async () => {
-      const data = await getData(city);
+      const data = await getOpenWeatherData(city);
       groupWeatherData(data);
     };
     getWeather();
@@ -49,7 +48,7 @@ const OpenWeather: FC<OpenWeatherProps> = () => {
     <div style={{ backgroundColor: "green" }}>
       <input onChange={handleInputChange} type="text" value={city} />
       <button onClick={handleClick}>find</button>
-      <WeatherLayout weather={weather} />
+      <WeatherLayout weather={openWeatherData} />
     </div>
   );
 };

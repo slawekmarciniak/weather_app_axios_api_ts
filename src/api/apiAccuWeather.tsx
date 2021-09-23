@@ -7,9 +7,10 @@ export const getAccuWeatherData = async (city: string) => {
   return axios
     .get(`${url}/locations/v1/cities/search?apikey=${key}&q=${city}`)
     .then((data) => {
+      console.log(data);
       return axios
         .get(
-          `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${data.data[0].Key}?apikey=wVGR9UsUbiesP037o51yiCcq4mGJQS2A&metric=true`
+          `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${data.data[0].Key}?apikey=${key}&metric=true`
         )
         .then((data) => {
           return data.data.DailyForecasts;
