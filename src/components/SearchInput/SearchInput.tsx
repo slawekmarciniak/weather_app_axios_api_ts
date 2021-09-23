@@ -1,11 +1,10 @@
-import { FC } from "react";
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
+import ClearIcon from "@mui/icons-material/Clear";
+import SearchIcon from "@mui/icons-material/Search";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
-import ClearIcon from "@mui/icons-material/Clear";
-import { useContext } from "react";
+import InputBase from "@mui/material/InputBase";
+import Paper from "@mui/material/Paper";
+import { FC, useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
 import "./styles.css";
 
@@ -36,7 +35,7 @@ interface SearchInputProps {
 const SearchInput: FC<SearchInputProps> = ({ handleClick }) => {
   const { city, handleInputChange, resetInput } = useContext(AppContext);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     const onlyLetters = /^[a-pr-uwy-zA-PR-UWY-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/;

@@ -1,8 +1,5 @@
 import { FC } from "react";
 import Paper from "@mui/material/Paper";
-interface WeatherElementProps {
-  weatherDetail: any;
-}
 
 const styles = {
   width: 190,
@@ -15,6 +12,14 @@ const styles = {
   justifyContent: "space-around",
   padding: 5,
 };
+
+interface WeatherElementProps {
+  weatherDetail: any;
+  // weatherDetail: {
+  //   name: string;
+  //   details: string;
+  // };
+}
 
 const WeatherElement: FC<WeatherElementProps> = ({ weatherDetail }) => {
   return (

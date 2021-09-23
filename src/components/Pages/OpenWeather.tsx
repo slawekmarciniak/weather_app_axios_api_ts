@@ -1,9 +1,8 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { getOpenWeatherData } from "../../api/apiOpenWeather";
-import WeatherLayout from "../WeatherLayout";
-import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
 import SearchInput from "../SearchInput";
+import WeatherLayout from "../WeatherLayout";
 import "./styles.css";
 
 interface OpenWeatherProps {}

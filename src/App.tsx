@@ -1,8 +1,8 @@
-import AppProvider from "./AppContext/AppContext";
-import { AccuWeather, Home, OpenWeather, Weatherbit } from "./components/Pages";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "./components/Nav";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import AppProvider from "./AppContext/AppContext";
+import Nav from "./components/Nav";
+import { AccuWeather, Home, OpenWeather, Weatherbit } from "./components/Pages";
 
 function App() {
   return (
