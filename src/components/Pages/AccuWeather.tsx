@@ -8,8 +8,7 @@ import SearchInput from "../SearchInput";
 interface AccuWeatherProps {}
 
 const AccuWeather: FC<AccuWeatherProps> = () => {
-  const { city, handleInputChange, accuWeatherData, setAccuWeatherData } =
-    useContext(AppContext);
+  const { city, accuWeatherData, setAccuWeatherData } = useContext(AppContext);
 
   const groupWeatherData = (data: any) => {
     const temperatures = [];
@@ -33,7 +32,11 @@ const AccuWeather: FC<AccuWeatherProps> = () => {
   return (
     <div>
       <SearchInput handleClick={handleClick} />
-      <WeatherLayout weather={accuWeatherData} />
+      {accuWeatherData && (
+        <div>
+          <WeatherLayout weather={accuWeatherData} />
+        </div>
+      )}
     </div>
   );
 };

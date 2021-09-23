@@ -48,7 +48,11 @@ const OpenWeather: FC<OpenWeatherProps> = () => {
   return (
     <div>
       <SearchInput handleClick={handleClick} />
-      <WeatherLayout weather={openWeatherData} />
+      {openWeatherData && (
+        <div>
+          <WeatherLayout weather={openWeatherData} />
+        </div>
+      )}
     </div>
   );
 };

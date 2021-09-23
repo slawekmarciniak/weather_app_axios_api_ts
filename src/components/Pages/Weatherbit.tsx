@@ -8,8 +8,7 @@ import SearchInput from "../SearchInput";
 interface WeatherbitProps {}
 
 const Weatherbit: FC<WeatherbitProps> = () => {
-  const { weatherbitData, setWeatherbitData, city, handleInputChange } =
-    useContext(AppContext);
+  const { weatherbitData, setWeatherbitData, city } = useContext(AppContext);
 
   const groupWeatherData = (data: any) => {
     const temperatures = [];
@@ -33,7 +32,12 @@ const Weatherbit: FC<WeatherbitProps> = () => {
   return (
     <div>
       <SearchInput handleClick={handleClick} />
-      <WeatherLayout weather={weatherbitData} />
+
+      {weatherbitData && (
+        <div>
+          <WeatherLayout weather={weatherbitData} />
+        </div>
+      )}
     </div>
   );
 };

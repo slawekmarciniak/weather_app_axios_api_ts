@@ -22,6 +22,7 @@
 .navContainer li {
     text-decoration: none;
     text-transform: uppercase;
+    letter-spacing: 1.2px;
     display: block;
     margin-left: 0;
    
