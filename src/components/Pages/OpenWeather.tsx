@@ -40,7 +40,7 @@ const OpenWeather: FC<OpenWeatherProps> = () => {
     const getWeather = async () => {
       const data = await getOpenWeatherData(city);
       if (data === "error") {
-        alert("error! please try again");
+        alert("error! change city name or try again later");
         return;
       }
       groupWeatherData(data);

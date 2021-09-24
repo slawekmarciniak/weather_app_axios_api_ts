@@ -25,7 +25,7 @@ const AccuWeather: FC<AccuWeatherProps> = () => {
     const getData = async () => {
       const data = await getAccuWeatherData(city);
       if (data === "error") {
-        alert("error! please try again");
+        alert("error! change city name or try again later");
         return;
       }
       groupWeatherData(data);
